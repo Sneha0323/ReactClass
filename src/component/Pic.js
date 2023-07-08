@@ -1,6 +1,6 @@
 import './Pic.css'
 
-function Pic ({id,title,like='100k', time, verified}){    
+function Pic ({id,title,like='100k', time, verified,children}){    
     return (
         <>
         <div className="container">
@@ -12,6 +12,7 @@ function Pic ({id,title,like='100k', time, verified}){
             <div className="views">
             <span>{like}</span> <b>Likes</b> <span>{time}</span>
             </div>
+            {children}
         </div>
         </>
     )

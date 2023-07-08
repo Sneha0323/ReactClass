@@ -1,16 +1,21 @@
 import './PlayButtons.css';
+import { useState } from 'react';
 
 export default function PlayButtons({ongo,onpause,name}){
-    let status=false
+    const [status,setStatus]= useState(false)
     function clickHandler(){
-        if (status) onpause()
-        else ongo();
+        if (status){
+            onpause();
+        }
+        else {
+            ongo();
+        }
 
-        status = !status
+        setStatus(!status)
     }
     return(
         <>
-            <button onClick={clickHandler}>{name}{status?'>':'||'}</button>
-        </  >
+            <button onClick={clickHandler}>{name?'Play':'Pause'}{status ? '⏸': '▶️'}</button>
+        </>
     )
 }
