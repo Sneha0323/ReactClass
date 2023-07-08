@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import Pic from './component/Pic';
+import PlayButtons from './component/PlayButtons';
+import Details from './component/list';
 
 function App() {
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        Details.map(Detail=> <Pic 
+          key={Detail.id}
+          id={Detail.id}
+          title={Detail.title}
+          like={Detail.like}
+          time={Detail.time}
+          verified={Detail.verified}/>)
+      }
+      <div>
+   <PlayButtons name="Play" ongo={()=>console.log('Play click')} onpause={()=>console.log('Pause click')}/>
+   {/* <PlayButtons name="Pouse" onpause={()=>alert('Pause click')}/> */}
+   </div>
     </div>
   );
+
 }
 
 export default App;
