@@ -5,16 +5,25 @@
     border: 2px solid gray;
     align-items: center;  
     text-align: left;  
+    position: relative;
 }
 .image{
     margin: auto;
     align-items: center;
 }
 .title{
-    font-size:20px;
+    font-size:18px;
     font-weight: bold;
 }
 .channel{
     font-size: 15px;
     font-weight: bold;
+}
+.close{
+    position: absolute;
+    right: 0;
+}
+.edit{
+    position: absolute;
+    right: 3em;
 }
