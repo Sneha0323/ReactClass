@@ -1,19 +1,27 @@
 // import Details from "./list";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Addnew.css'
 
-function Addnew({newP}){
-    const [addnew,setAddnew] =useState({
-        like : '11',
-            time : '10 month ago',
-            verified:true
-    })
+
+    function Addnew({newP,updatePic,editablePic}){
+        const initalState ={
+            like : '',
+                time : '10 month ago',
+                verified:true,
+        title:''
+        }
+    const [addnew,setAddnew] =useState(initalState)
 
     function handlerSubmit(e){
         e.preventDefault()
-        newP(addnew)
+        if(editablePic){
+            updatePic(addnew)
+        }else{
+            newP(addnew)
+        }
+       
         // console.log(addnew)
-
+        setAddnew(initalState)
     }
     function handleInput(e){
     
@@ -21,20 +29,36 @@ function Addnew({newP}){
         setAddnew({...addnew,
             [e.target.name]:e.target.value
         })
-
     }
+    useEffect(()=>{
+        if(editablePic){
+            setAddnew(editablePic)
+        }
+            
+         
+        console.log('effect')
+    },[editablePic])
 return(
     <div>
         <form>
-            <input type="text" placeholder="Title" name="title" onChange={handleInput}/>
+            <input 
+            type="text" 
+            placeholder="Title" 
+            name="title"
+            onChange={handleInput}
+            value={addnew.title}
+            />
             {/* {addnew.title} */}
-            <input type="text" placeholder="Name" name="view" onChange={handleInput}/>
+            <input type="text"
+            placeholder="like"
+             name="like" 
+             onChange={handleInput}
+             value={addnew.like}
+             />
         </form>
 
         <button 
-        onClick={handlerSubmit}
-
-        >Add New</button> 
+        onClick={handlerSubmit}>{editablePic?'edit':'Add'} New</button> 
     </div>
 )
 }

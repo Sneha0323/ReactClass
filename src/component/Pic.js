@@ -1,9 +1,11 @@
 import './Pic.css'
 
-function Pic ({id,title,like='100k', time, verified,children}){    
+function Pic ({id,title,like='100k', time, verified,children,deletePic,editPic}){    
     return (
         <>
         <div className="container">
+            <button className='close' onClick={()=>{deletePic(id)}}>X</button>
+            <button className='edit' onClick={()=>{editPic(id)}}>Edit</button>
             <div className="image">
                 <img src={`https://picsum.photos/id/${id}/160/90`} alt="Laptop"/>
             </div>
